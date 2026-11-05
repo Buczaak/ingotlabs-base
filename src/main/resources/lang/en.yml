@@ -1,0 +1,255 @@
+# Ingot Labs Base - English language file (MiniMessage formatting)
+# Placeholders in {braces} are filled in by the plugin. Missing keys fall back to the bundled English text.
+
+prefix: "<gold><bold>Ingot</bold></gold> <dark_gray>»</dark_gray> <gray>"
+
+# Extra command labels registered on startup (restart needed after changes)
+commands:
+  bank: []
+  balance: []
+  pay: []
+  baltop: []
+  ieco: []
+
+general:
+  no-permission: "<red>You don't have permission to do that."
+  players-only: "<red>This command can only be used by players."
+  player-not-found: "<red>Player <white>{player}</white> was not found."
+  invalid-amount: "<red>Invalid amount. Use a positive number, e.g. <white>100</white>, <white>2.5</white> or <white>1.5k</white> (suffixes: k, m, b, t)."
+  unknown-subcommand: "<red>Unknown subcommand. Use <white>/ieco</white> for help."
+  reloaded: "<green>Configuration and language files reloaded."
+  error: "<red>Something went wrong. Check the console for details."
+
+about:
+  info:
+    - "<gold><bold>Ingot Labs Base</bold></gold> <gray>v{version}</gray>"
+    - "<yellow>/{label} reload</yellow> <gray>- reload config.yml and language files</gray>"
+
+balance:
+  self: "Your balance: <green>{balance}</green>"
+  other: "Balance of <white>{player}</white>: <green>{balance}</green>"
+
+pay:
+  disabled: "<red>Transfers are currently disabled."
+  usage: "<red>Usage: <white>/{label} [player] [amount]</white>"
+  self: "<red>You can't pay yourself."
+  too-low: "<red>The minimum transfer is <white>{min}</white>."
+  too-high: "<red>The maximum transfer is <white>{max}</white>."
+  cooldown: "<red>Please wait <white>{seconds}s</white> before sending another payment."
+  insufficient: "<red>You don't have enough money."
+  target-limit: "<white>{player}</white> <red>can't hold that much money."
+  choose-amount: "<red>Choose an amount first."
+  confirm: "<yellow>Sending <white>{amount}</white> to <white>{player}</white> needs confirmation. Repeat the command within <white>15</white> seconds to confirm."
+  sent: "You sent <green>{amount}</green> to <white>{player}</white>."
+  sent-tax: "You sent <green>{amount}</green> to <white>{player}</white> <dark_gray>(fee: {tax}, they received {received})</dark_gray>."
+  received: "You received <green>{amount}</green> from <white>{player}</white>."
+
+top:
+  header: "<gold><bold>Richest players</bold></gold> <gray>(page {page}/{pages})</gray>"
+  entry: "<yellow>#{rank}</yellow> <white>{player}</white> <dark_gray>-</dark_gray> <green>{balance}</green>"
+  empty: "<gray>There are no accounts yet."
+  your-rank: "<gray>Your rank: <yellow>#{rank}</yellow> <dark_gray>-</dark_gray> <green>{balance}</green>"
+
+ieco:
+  help:
+    - "<gold><bold>Ingot Labs Base</bold></gold> <gray>- economy administration</gray>"
+    - "<yellow>/ieco give [player] [amount]</yellow> <gray>- add money</gray>"
+    - "<yellow>/ieco take [player] [amount]</yellow> <gray>- remove money</gray>"
+    - "<yellow>/ieco set [player] [amount]</yellow> <gray>- set the balance</gray>"
+    - "<yellow>/ieco reset [player]</yellow> <gray>- reset to the starting balance</gray>"
+    - "<yellow>/ieco check [player]</yellow> <gray>- show balance and rank</gray>"
+    - "<yellow>/ieco history [player] [page]</yellow> <gray>- show transactions</gray>"
+    - "<yellow>/ieco panel</yellow> <gray>- open the admin panel</gray>"
+    - "<yellow>/ieco reload</yellow> <gray>- reload config and language</gray>"
+  usage: "<red>Usage: <white>{usage}</white>"
+  give: "Added <green>{amount}</green> to <white>{player}</white>. New balance: <green>{balance}</green>."
+  take: "Removed <green>{amount}</green> from <white>{player}</white>. New balance: <green>{balance}</green>."
+  set: "Balance of <white>{player}</white> set to <green>{balance}</green>."
+  reset: "Balance of <white>{player}</white> reset to <green>{balance}</green>."
+  insufficient: "<red>That would drop the balance below the allowed minimum. Current balance: <white>{balance}</white>."
+  over-limit: "<red>That would exceed the maximum balance of <white>{max}</white>."
+  check: "<white>{player}</white> <dark_gray>|</dark_gray> balance: <green>{balance}</green> <dark_gray>|</dark_gray> rank: <yellow>{rank}</yellow>"
+
+history:
+  header: "<gold><bold>Transactions of {player}</bold></gold> <gray>(page {page})</gray>"
+  entry: "<dark_gray>{time}</dark_gray> <yellow>{type}</yellow> <white>{amount}</white> <gray>→ {balance}</gray> <dark_gray>{other}</dark_gray>"
+  empty: "<gray>No transactions found."
+  more: "<gray>More entries on page {next}."
+  types:
+    DEPOSIT: "Deposit"
+    WITHDRAW: "Withdrawal"
+    TRANSFER_IN: "Received"
+    TRANSFER_OUT: "Sent"
+    ADMIN_GIVE: "Admin give"
+    ADMIN_TAKE: "Admin take"
+    ADMIN_SET: "Admin set"
+    ADMIN_RESET: "Admin reset"
+    START: "Starting balance"
+
+# Questions that menus ask in chat (custom amount, name of an offline player)
+prompt:
+  hint: "<gray>Type your answer in chat. Type <white>cancel</white> to abort <dark_gray>({seconds}s)</dark_gray>."
+  player: "<yellow>Type the name of the player you want to pay."
+  amount: "<yellow>Type the amount to send (e.g. <white>250</white> or <white>1.5k</white>)."
+  timeout: "<red>Time ran out, the request was cancelled."
+  cancelled: "<yellow>Cancelled."
+
+gui:
+  bank:
+    title: "<dark_gray>Bank"
+    account:
+      name: "<gold><bold>Your account"
+      lore:
+        - "<gray>Balance: <green>{balance}"
+        - "<gray>Rank: <yellow>{rank}"
+        - ""
+        - "<yellow>Click to open your account"
+    top:
+      name: "<gold><bold>Richest players"
+      lore:
+        - "<gray>Click to open the ranking"
+        - ""
+      entry: "<yellow>#{rank} <white>{player} <dark_gray>- <green>{balance}"
+    transfer:
+      name: "<gold><bold>Send money"
+      lore:
+        - "<gray>Click to choose a player"
+        - "<gray>and the amount"
+    history:
+      name: "<gold><bold>Transaction history"
+      lore:
+        - "<gray>Click to browse your"
+        - "<gray>latest transactions"
+    exchange:
+      name: "<aqua><bold>Exchange account"
+      lore:
+        - "<gray>Click to open your"
+        - "<gray>exchange account"
+    admin:
+      name: "<red><bold>Admin panel"
+      lore:
+        - "<gray>Click to manage player balances"
+  account:
+    title: "<dark_gray>Your account"
+    head:
+      name: "<gold><bold>{player}"
+      lore:
+        - "<gray>Your personal account in {currency}"
+    balance:
+      name: "<gold><bold>Account balance"
+      lore:
+        - "<gray>Balance: <green>{balance}"
+        - "<gray>Short form: <white>{short}"
+    rank:
+      name: "<gold><bold>Ranking position"
+      lore:
+        - "<gray>Rank: <yellow>{rank} <dark_gray>of {accounts}"
+        - "<gray>Share of all money: <white>{share}%"
+    back: "<red>Back"
+  rank:
+    title: "<dark_gray>Richest players ({page}/{pages})"
+    head:
+      name: "<yellow>#{rank} <white>{player}"
+      lore:
+        - "<gray>Balance: <green>{balance}"
+        - "<gray>Rank: <yellow>#{rank}"
+        - "<gray>Share of all money: <white>{share}%"
+      gap-above: "<gray>Behind #{above}: <red>-{diff}"
+      lead: "<gray>Lead over #{below}: <green>+{diff}"
+      you: "<gold>★ This is you"
+    prev: "<yellow>Previous page"
+    next: "<yellow>Next page"
+    back: "<red>Back"
+    me:
+      name: "<gold><bold>Your position"
+      lore:
+        - "<gray>Rank: <yellow>{rank}"
+        - "<gray>Balance: <green>{balance}"
+        - "<gray>Share of all money: <white>{share}%"
+  history:
+    title: "<dark_gray>History: {player} (page {page})"
+    entry:
+      name-plus: "<green>{type} <white>+{amount}"
+      name-minus: "<red>{type} <white>-{amount}"
+      time: "<gray>Date: <white>{time}"
+      balance: "<gray>Balance after: <green>{balance}"
+      other: "<gray>With: <white>{other}"
+      note: "<gray>Note: <white>{note}"
+    empty: "<gray>No transactions yet"
+    prev: "<yellow>Previous page"
+    next: "<yellow>Next page"
+    back: "<red>Back"
+    info:
+      name: "<gold><bold>{player}"
+      lore:
+        - "<gray>Current balance: <green>{balance}"
+        - "<gray>Page: <white>{page}"
+  pay:
+    player-title: "<dark_gray>Send money: choose a player"
+    amount-title: "<dark_gray>Send money to {player}"
+    head:
+      name: "<white>{player}"
+      lore:
+        - "<yellow>Click to send money"
+    nobody: "<gray>No other players online. Use the name tag."
+    name-search:
+      name: "<yellow>Other player"
+      lore:
+        - "<gray>Click and type the name of a"
+        - "<gray>player (also offline) in chat"
+    recipient:
+      name: "<white>{player}"
+      lore:
+        - "<gray>Recipient of the transfer"
+    add: "<green>+{amount}"
+    take: "<red>-{amount}"
+    amount:
+      name: "<gold><bold>Amount: <green>{amount}"
+      lore:
+        - "<gray>Fee: <white>{tax}"
+        - "<gray>Recipient gets: <green>{received}"
+        - "<gray>Your balance after: <white>{after}"
+        - "<dark_gray>Minimum transfer: {min}"
+    custom:
+      name: "<yellow>Custom amount"
+      lore:
+        - "<gray>Click and type the amount in chat"
+    confirm:
+      name: "<green><bold>Send {amount}"
+      lore:
+        - "<gray>Click to send the money to <white>{player}"
+    reset:
+      name: "<red>Reset amount"
+    prev: "<yellow>Previous page"
+    next: "<yellow>Next page"
+    back: "<red>Back"
+  admin:
+    title: "<dark_gray>Admin panel (page {page})"
+    head:
+      name: "<white>{player}"
+      lore:
+        - "<gray>Balance: <green>{balance}"
+        - "<yellow>Click to edit"
+    prev: "<yellow>Previous page"
+    next: "<yellow>Next page"
+    back: "<red>Back"
+    info:
+      name: "<gold>Accounts"
+      lore:
+        - "<gray>Total accounts: <white>{accounts}"
+  player:
+    title: "<dark_gray>Editing {player}"
+    add: "<green>+{amount}"
+    take: "<red>-{amount}"
+    reset:
+      name: "<red><bold>Reset balance"
+      lore:
+        - "<gray>Sets the balance to <white>{amount}"
+    history:
+      name: "<gold>Transaction history"
+    set:
+      name: "<yellow>Set exact amount"
+      lore:
+        - "<gray>Click to get the command"
+      hint: "<gray>Set an exact amount: <click:suggest_command:'/ieco set {player} '><yellow>[click to fill in]</yellow></click>"
+    back: "<yellow>Back"

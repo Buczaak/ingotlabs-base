@@ -1,0 +1,91 @@
+name: IngotLabsBase
+version: '${version}'
+main: pl.ingotlabs.base.IngotLabsBase
+api-version: '1.21'
+description: Server economy with bank accounts, transfers, rankings and a Vault provider.
+authors: [Ingot Labs]
+depend: [Vault]
+softdepend: [PlaceholderAPI]
+loadbefore: [WebMarket]
+
+commands:
+  bank:
+    description: Opens the bank panel.
+    usage: /<command>
+  balance:
+    description: Shows your balance or the balance of another player.
+    usage: /<command> [player]
+    aliases: [bal, money]
+  pay:
+    description: Sends money to another player.
+    usage: /<command> [player] [amount]
+  baltop:
+    description: Shows the richest players.
+    usage: /<command> [page]
+    aliases: [balancetop]
+  ieco:
+    description: Economy administration.
+    usage: /<command>
+    aliases: [ingoteco]
+  ingotlabs:
+    description: Plugin info and reload.
+    usage: /<command> [reload]
+    aliases: [ilb, ibase]
+
+permissions:
+  ingotlabs.bank:
+    description: Use /bank
+    default: true
+  ingotlabs.balance:
+    description: Use /balance
+    default: true
+  ingotlabs.balance.others:
+    description: Check the balance of other players
+    default: op
+  ingotlabs.pay:
+    description: Use /pay
+    default: true
+  ingotlabs.pay.bypass-cooldown:
+    description: Ignore the /pay cooldown
+    default: op
+  ingotlabs.top:
+    description: Use /baltop
+    default: true
+  ingotlabs.admin.give:
+    description: /ieco give
+    default: op
+  ingotlabs.admin.take:
+    description: /ieco take
+    default: op
+  ingotlabs.admin.set:
+    description: /ieco set
+    default: op
+  ingotlabs.admin.reset:
+    description: /ieco reset
+    default: op
+  ingotlabs.admin.check:
+    description: /ieco check
+    default: op
+  ingotlabs.admin.history:
+    description: /ieco history
+    default: op
+  ingotlabs.admin.panel:
+    description: Open the admin panel
+    default: op
+  ingotlabs.admin.reload:
+    description: /ieco reload
+    default: op
+  ingotlabs.admin:
+    description: All administration permissions
+    default: op
+    children:
+      ingotlabs.admin.give: true
+      ingotlabs.admin.take: true
+      ingotlabs.admin.set: true
+      ingotlabs.admin.reset: true
+      ingotlabs.admin.check: true
+      ingotlabs.admin.history: true
+      ingotlabs.admin.panel: true
+      ingotlabs.admin.reload: true
+      ingotlabs.balance.others: true
+      ingotlabs.pay.bypass-cooldown: true

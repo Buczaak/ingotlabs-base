@@ -1,0 +1,255 @@
+# Ingot Labs Base - polski plik językowy (formatowanie MiniMessage)
+# Wartości w {nawiasach} są uzupełniane przez plugin. Brakujące klucze są pobierane z angielskiego pliku wbudowanego w plugin.
+
+prefix: "<gold><bold>Ingot</bold></gold> <dark_gray>»</dark_gray> <gray>"
+
+# Dodatkowe nazwy komend rejestrowane przy starcie (zmiana wymaga restartu)
+commands:
+  bank: [konto]
+  balance: [saldo, stan]
+  pay: [przelew, zaplac]
+  baltop: [ranking, najbogatsi]
+  ieco: [ekonomia]
+
+general:
+  no-permission: "<red>Nie masz uprawnień do tej czynności."
+  players-only: "<red>Tej komendy mogą używać tylko gracze."
+  player-not-found: "<red>Nie znaleziono gracza <white>{player}</white>."
+  invalid-amount: "<red>Nieprawidłowa kwota. Podaj liczbę dodatnią, np. <white>100</white>, <white>2.5</white> lub <white>1.5k</white> (przyrostki: k, m, b, t)."
+  unknown-subcommand: "<red>Nieznana podkomenda. Wpisz <white>/ieco</white>, aby zobaczyć pomoc."
+  reloaded: "<green>Przeładowano konfigurację i pliki językowe."
+  error: "<red>Coś poszło nie tak. Sprawdź konsolę serwera."
+
+about:
+  info:
+    - "<gold><bold>Ingot Labs Base</bold></gold> <gray>v{version}</gray>"
+    - "<yellow>/{label} reload</yellow> <gray>- przeładuj config.yml i pliki językowe</gray>"
+
+balance:
+  self: "Twój stan konta: <green>{balance}</green>"
+  other: "Stan konta gracza <white>{player}</white>: <green>{balance}</green>"
+
+pay:
+  disabled: "<red>Przelewy są obecnie wyłączone."
+  usage: "<red>Użycie: <white>/{label} [gracz] [kwota]</white>"
+  self: "<red>Nie możesz wysłać pieniędzy samemu sobie."
+  too-low: "<red>Minimalna kwota przelewu to <white>{min}</white>."
+  too-high: "<red>Maksymalna kwota przelewu to <white>{max}</white>."
+  cooldown: "<red>Odczekaj <white>{seconds}s</white> przed kolejnym przelewem."
+  insufficient: "<red>Nie masz wystarczająco środków."
+  target-limit: "<red>Gracz <white>{player}</white> nie może posiadać aż tyle pieniędzy."
+  choose-amount: "<red>Najpierw wybierz kwotę."
+  confirm: "<yellow>Przelew <white>{amount}</white> dla <white>{player}</white> wymaga potwierdzenia. Powtórz komendę w ciągu <white>15</white> sekund."
+  sent: "Wysłano <green>{amount}</green> do gracza <white>{player}</white>."
+  sent-tax: "Wysłano <green>{amount}</green> do gracza <white>{player}</white> <dark_gray>(prowizja: {tax}, gracz otrzymał {received})</dark_gray>."
+  received: "Otrzymano <green>{amount}</green> od gracza <white>{player}</white>."
+
+top:
+  header: "<gold><bold>Najbogatsi gracze</bold></gold> <gray>(strona {page}/{pages})</gray>"
+  entry: "<yellow>#{rank}</yellow> <white>{player}</white> <dark_gray>-</dark_gray> <green>{balance}</green>"
+  empty: "<gray>Nie ma jeszcze żadnych kont."
+  your-rank: "<gray>Twoje miejsce: <yellow>#{rank}</yellow> <dark_gray>-</dark_gray> <green>{balance}</green>"
+
+ieco:
+  help:
+    - "<gold><bold>Ingot Labs Base</bold></gold> <gray>- administracja ekonomią</gray>"
+    - "<yellow>/ieco give [gracz] [kwota]</yellow> <gray>- dodaj pieniądze</gray>"
+    - "<yellow>/ieco take [gracz] [kwota]</yellow> <gray>- zabierz pieniądze</gray>"
+    - "<yellow>/ieco set [gracz] [kwota]</yellow> <gray>- ustaw stan konta</gray>"
+    - "<yellow>/ieco reset [gracz]</yellow> <gray>- przywróć saldo początkowe</gray>"
+    - "<yellow>/ieco check [gracz]</yellow> <gray>- pokaż saldo i miejsce w rankingu</gray>"
+    - "<yellow>/ieco history [gracz] [strona]</yellow> <gray>- pokaż historię transakcji</gray>"
+    - "<yellow>/ieco panel</yellow> <gray>- otwórz panel administratora</gray>"
+    - "<yellow>/ieco reload</yellow> <gray>- przeładuj konfigurację i język</gray>"
+  usage: "<red>Użycie: <white>{usage}</white>"
+  give: "Dodano <green>{amount}</green> graczowi <white>{player}</white>. Nowe saldo: <green>{balance}</green>."
+  take: "Zabrano <green>{amount}</green> graczowi <white>{player}</white>. Nowe saldo: <green>{balance}</green>."
+  set: "Ustawiono saldo gracza <white>{player}</white> na <green>{balance}</green>."
+  reset: "Przywrócono saldo gracza <white>{player}</white> do <green>{balance}</green>."
+  insufficient: "<red>Saldo spadłoby poniżej dozwolonego minimum. Aktualne saldo: <white>{balance}</white>."
+  over-limit: "<red>Przekroczono maksymalne saldo wynoszące <white>{max}</white>."
+  check: "<white>{player}</white> <dark_gray>|</dark_gray> saldo: <green>{balance}</green> <dark_gray>|</dark_gray> miejsce: <yellow>{rank}</yellow>"
+
+history:
+  header: "<gold><bold>Transakcje gracza {player}</bold></gold> <gray>(strona {page})</gray>"
+  entry: "<dark_gray>{time}</dark_gray> <yellow>{type}</yellow> <white>{amount}</white> <gray>→ {balance}</gray> <dark_gray>{other}</dark_gray>"
+  empty: "<gray>Brak transakcji."
+  more: "<gray>Więcej wpisów na stronie {next}."
+  types:
+    DEPOSIT: "Wpłata"
+    WITHDRAW: "Wypłata"
+    TRANSFER_IN: "Otrzymano"
+    TRANSFER_OUT: "Wysłano"
+    ADMIN_GIVE: "Admin: dodanie"
+    ADMIN_TAKE: "Admin: odebranie"
+    ADMIN_SET: "Admin: ustawienie"
+    ADMIN_RESET: "Admin: reset"
+    START: "Saldo początkowe"
+
+# Pytania zadawane przez menu na czacie (własna kwota, nick gracza offline)
+prompt:
+  hint: "<gray>Wpisz odpowiedź na czacie. Napisz <white>anuluj</white>, aby przerwać <dark_gray>({seconds}s)</dark_gray>."
+  player: "<yellow>Wpisz nick gracza, któremu chcesz wysłać pieniądze."
+  amount: "<yellow>Wpisz kwotę przelewu (np. <white>250</white> lub <white>1.5k</white>)."
+  timeout: "<red>Czas minął, operacja została anulowana."
+  cancelled: "<yellow>Anulowano."
+
+gui:
+  bank:
+    title: "<dark_gray>Bank"
+    account:
+      name: "<gold><bold>Twoje konto"
+      lore:
+        - "<gray>Stan konta: <green>{balance}"
+        - "<gray>Miejsce w rankingu: <yellow>{rank}"
+        - ""
+        - "<yellow>Kliknij, aby otworzyć swoje konto"
+    top:
+      name: "<gold><bold>Najbogatsi gracze"
+      lore:
+        - "<gray>Kliknij, aby otworzyć ranking"
+        - ""
+      entry: "<yellow>#{rank} <white>{player} <dark_gray>- <green>{balance}"
+    transfer:
+      name: "<gold><bold>Wyślij pieniądze"
+      lore:
+        - "<gray>Kliknij, aby wybrać gracza"
+        - "<gray>i kwotę przelewu"
+    history:
+      name: "<gold><bold>Historia transakcji"
+      lore:
+        - "<gray>Kliknij, aby przeglądać swoje"
+        - "<gray>ostatnie transakcje"
+    exchange:
+      name: "<aqua><bold>Konto giełdowe"
+      lore:
+        - "<gray>Kliknij, aby otworzyć swoje"
+        - "<gray>konto giełdowe"
+    admin:
+      name: "<red><bold>Panel administratora"
+      lore:
+        - "<gray>Kliknij, aby zarządzać saldami graczy"
+  account:
+    title: "<dark_gray>Twoje konto"
+    head:
+      name: "<gold><bold>{player}"
+      lore:
+        - "<gray>Twoje osobiste konto w walucie: {currency}"
+    balance:
+      name: "<gold><bold>Stan konta"
+      lore:
+        - "<gray>Saldo: <green>{balance}"
+        - "<gray>Krótki zapis: <white>{short}"
+    rank:
+      name: "<gold><bold>Pozycja w rankingu"
+      lore:
+        - "<gray>Miejsce: <yellow>{rank} <dark_gray>z {accounts}"
+        - "<gray>Udział w pieniądzach serwera: <white>{share}%"
+    back: "<red>Wróć"
+  rank:
+    title: "<dark_gray>Najbogatsi gracze ({page}/{pages})"
+    head:
+      name: "<yellow>#{rank} <white>{player}"
+      lore:
+        - "<gray>Stan konta: <green>{balance}"
+        - "<gray>Miejsce w rankingu: <yellow>#{rank}"
+        - "<gray>Udział w pieniądzach serwera: <white>{share}%"
+      gap-above: "<gray>Do miejsca #{above} brakuje: <red>{diff}"
+      lead: "<gray>Przewaga nad miejscem #{below}: <green>+{diff}"
+      you: "<gold>★ To Ty"
+    prev: "<yellow>Poprzednia strona"
+    next: "<yellow>Następna strona"
+    back: "<red>Wróć"
+    me:
+      name: "<gold><bold>Twoja pozycja"
+      lore:
+        - "<gray>Miejsce w rankingu: <yellow>{rank}"
+        - "<gray>Stan konta: <green>{balance}"
+        - "<gray>Udział w pieniądzach serwera: <white>{share}%"
+  history:
+    title: "<dark_gray>Historia: {player} (strona {page})"
+    entry:
+      name-plus: "<green>{type} <white>+{amount}"
+      name-minus: "<red>{type} <white>-{amount}"
+      time: "<gray>Data: <white>{time}"
+      balance: "<gray>Saldo po operacji: <green>{balance}"
+      other: "<gray>Z kim: <white>{other}"
+      note: "<gray>Notatka: <white>{note}"
+    empty: "<gray>Brak transakcji"
+    prev: "<yellow>Poprzednia strona"
+    next: "<yellow>Następna strona"
+    back: "<red>Wróć"
+    info:
+      name: "<gold><bold>{player}"
+      lore:
+        - "<gray>Aktualny stan konta: <green>{balance}"
+        - "<gray>Strona: <white>{page}"
+  pay:
+    player-title: "<dark_gray>Przelew: wybierz gracza"
+    amount-title: "<dark_gray>Przelew dla {player}"
+    head:
+      name: "<white>{player}"
+      lore:
+        - "<yellow>Kliknij, aby wysłać pieniądze"
+    nobody: "<gray>Brak innych graczy online. Użyj metki z nazwą."
+    name-search:
+      name: "<yellow>Inny gracz"
+      lore:
+        - "<gray>Kliknij i wpisz na czacie nick"
+        - "<gray>gracza (także offline)"
+    recipient:
+      name: "<white>{player}"
+      lore:
+        - "<gray>Odbiorca przelewu"
+    add: "<green>+{amount}"
+    take: "<red>-{amount}"
+    amount:
+      name: "<gold><bold>Kwota: <green>{amount}"
+      lore:
+        - "<gray>Prowizja: <white>{tax}"
+        - "<gray>Odbiorca otrzyma: <green>{received}"
+        - "<gray>Twoje saldo po przelewie: <white>{after}"
+        - "<dark_gray>Minimalny przelew: {min}"
+    custom:
+      name: "<yellow>Własna kwota"
+      lore:
+        - "<gray>Kliknij i wpisz kwotę na czacie"
+    confirm:
+      name: "<green><bold>Wyślij {amount}"
+      lore:
+        - "<gray>Kliknij, aby wysłać pieniądze graczowi <white>{player}"
+    reset:
+      name: "<red>Wyzeruj kwotę"
+    prev: "<yellow>Poprzednia strona"
+    next: "<yellow>Następna strona"
+    back: "<red>Wróć"
+  admin:
+    title: "<dark_gray>Panel admina (strona {page})"
+    head:
+      name: "<white>{player}"
+      lore:
+        - "<gray>Stan konta: <green>{balance}"
+        - "<yellow>Kliknij, aby edytować"
+    prev: "<yellow>Poprzednia strona"
+    next: "<yellow>Następna strona"
+    back: "<red>Wróć"
+    info:
+      name: "<gold>Konta"
+      lore:
+        - "<gray>Liczba kont: <white>{accounts}"
+  player:
+    title: "<dark_gray>Edycja: {player}"
+    add: "<green>+{amount}"
+    take: "<red>-{amount}"
+    reset:
+      name: "<red><bold>Zresetuj saldo"
+      lore:
+        - "<gray>Ustawia saldo na <white>{amount}"
+    history:
+      name: "<gold>Historia transakcji"
+    set:
+      name: "<yellow>Ustaw dokładną kwotę"
+      lore:
+        - "<gray>Kliknij, aby uzyskać komendę"
+      hint: "<gray>Ustaw dokładną kwotę: <click:suggest_command:'/ieco set {player} '><yellow>[kliknij, aby wstawić]</yellow></click>"
+    back: "<yellow>Wróć"

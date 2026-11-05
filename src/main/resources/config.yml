@@ -1,0 +1,97 @@
+# Ingot Labs Base - main configuration
+# Language of messages and command aliases: en, pl (files in plugins/IngotLabsBase/lang/)
+language: en
+
+storage:
+  # sqlite (default, no setup needed) or mysql
+  type: sqlite
+  mysql:
+    host: localhost
+    port: 3306
+    database: ingotlabs
+    username: root
+    password: ""
+    use-ssl: false
+
+currency:
+  name-singular: "Ingot"
+  name-plural: "Ingots"
+  symbol: "$"
+  # Placeholders: {symbol} {amount} {name}
+  format: "{symbol}{amount}"
+  # Number of decimal places (0-4). Do not change this on a running server with existing balances.
+  decimals: 2
+  grouping: true
+  thousands-separator: ","
+  decimal-separator: "."
+
+accounts:
+  starting-balance: 100.0
+  # Lowest balance allowed (use a negative value to allow debt)
+  min-balance: 0.0
+  max-balance: 1000000000000.0
+
+pay:
+  enabled: true
+  min-amount: 1.0
+  # 0 = no limit
+  max-amount: 0
+  # Fee taken from the receiver's side of every transfer (percent, 0 = off)
+  tax-percent: 0.0
+  cooldown-seconds: 3
+  # Buttons (+/-) in the transfer menu opened from /bank (max 5)
+  gui-steps: [1, 10, 100, 1000, 10000]
+  # Transfers of this size or larger must be confirmed by repeating the command (0 = off)
+  confirm-above: 10000.0
+
+top:
+  # How often the ranking is recalculated
+  cache-seconds: 30
+  per-page: 10
+  # Player names hidden from the ranking (e.g. admins)
+  hidden-players: []
+
+transactions:
+  # Log every balance change (visible in /ieco history and the GUI)
+  log: true
+
+admin-gui:
+  # Buttons in the player editor (max 5)
+  steps: [1, 10, 100, 1000, 10000]
+
+gui:
+  # How long a player has to answer when the menu asks for text in chat
+  # (custom amount, name of an offline player)
+  chat-input-seconds: 30
+
+exchange:
+  # Button in /bank that opens the exchange account of another plugin
+  enabled: true
+  # The button is shown only when this plugin is installed and enabled
+  plugin: WebMarket
+  # Command (without the slash) that opens the exchange account. Check what your WebMarket uses!
+  command: webmarket
+
+commands:
+  # Ingot Labs takes over these commands from other plugins (EssentialsX etc.),
+  # so there are no conflicts. Set to false to leave other plugins' commands alone.
+  override-other-plugins: true
+  # label (command typed by the player): Ingot Labs command that handles it.
+  # Only labels that are already used by another plugin are replaced.
+  takeover:
+    balance: balance
+    bal: balance
+    money: balance
+    ebalance: balance
+    ebal: balance
+    emoney: balance
+    pay: pay
+    epay: pay
+    baltop: baltop
+    balancetop: baltop
+    ebaltop: baltop
+    ebalancetop: baltop
+    eco: ieco
+    economy: ieco
+    eeco: ieco
+    eeconomy: ieco
